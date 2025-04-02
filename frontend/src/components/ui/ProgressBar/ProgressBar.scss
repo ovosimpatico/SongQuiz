@@ -1,0 +1,60 @@
+@use "sass:color";
+@use '../../../styles/variables.scss';
+@use '../../../styles/mixins.scss';
+
+.progress-bar {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: variables.$border-radius-full;
+  overflow: hidden;
+  position: relative;
+
+  &__fill {
+    height: 100%;
+    border-radius: variables.$border-radius-full;
+    position: relative;
+
+    &--primary {
+      background: variables.$primary-gradient;
+    }
+
+    &--success {
+      background: linear-gradient(90deg, variables.$success-color, color.adjust(variables.$success-color, $lightness: -10%));
+    }
+
+    &--warning {
+      background: linear-gradient(90deg, variables.$warning-color, color.adjust(variables.$warning-color, $lightness: -10%));
+    }
+
+    &--danger {
+      background: linear-gradient(90deg, variables.$danger-color, color.adjust(variables.$danger-color, $lightness: -10%));
+    }
+  }
+
+  &__pulse {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%);
+    filter: blur(1px);
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0.9;
+  }
+}

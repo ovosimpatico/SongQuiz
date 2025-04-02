@@ -1,0 +1,64 @@
+@use '../../../styles/variables.scss' as variables;
+@use '../../../styles/mixins.scss' as mixins;
+
+.card {
+  background-color: rgba(variables.$background-light, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: variables.$border-radius-lg;
+  padding: variables.$spacing-lg;
+  border: 1px solid rgba(variables.$background-light, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(variables.$primary-color, 0.3),
+      transparent
+    );
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(variables.$primary-color, 0.1),
+      transparent
+    );
+  }
+
+  &--hover {
+    &:hover {
+      box-shadow: variables.$shadow-md;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &--interactive {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: variables.$shadow-md;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

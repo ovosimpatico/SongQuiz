@@ -1,0 +1,126 @@
+@use "sass:color";
+@use '../../../styles/variables.scss' as variables;
+@use '../../../styles/mixins.scss' as mixins;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 variables.$spacing-md;
+  border-radius: variables.$border-radius-md;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  position: relative;
+  overflow: hidden;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+
+    &--left {
+      margin-right: variables.$spacing-xs;
+    }
+
+    &--right {
+      margin-left: variables.$spacing-xs;
+    }
+  }
+
+  // Variants
+  &--primary {
+    background-color: variables.$primary-color;
+    color: variables.$text-on-primary;
+
+    &:hover {
+      background-color: color.adjust(variables.$primary-color, $lightness: 5%);
+      box-shadow: 0 2px 8px rgba(variables.$primary-color, 0.4);
+    }
+
+    &:active {
+      background-color: color.adjust(variables.$primary-color, $lightness: -5%);
+    }
+  }
+
+  &--secondary {
+    background-color: rgba(variables.$background-light, 0.1);
+    color: variables.$text-primary;
+    border: 1px solid rgba(variables.$primary-color, 0.3);
+
+    &:hover {
+      background-color: rgba(variables.$background-light, 0.2);
+      border-color: rgba(variables.$primary-color, 0.5);
+    }
+
+    &:active {
+      background-color: rgba(variables.$background-light, 0.3);
+    }
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    color: variables.$text-primary;
+
+    &:hover {
+      background-color: rgba(variables.$background-light, 0.1);
+    }
+
+    &:active {
+      background-color: rgba(variables.$background-light, 0.2);
+    }
+  }
+
+  &--danger {
+    background-color: variables.$danger-color;
+    color: variables.$text-on-primary;
+
+    &:hover {
+      background-color: color.adjust(variables.$danger-color, $lightness: 5%);
+      box-shadow: 0 2px 8px rgba(variables.$danger-color, 0.4);
+    }
+
+    &:active {
+      background-color: color.adjust(variables.$danger-color, $lightness: -5%);
+    }
+  }
+
+  // Sizes
+  &--small {
+    height: 36px;
+    font-size: 14px;
+    min-width: 80px;
+  }
+
+  &--medium {
+    height: 46px;
+    font-size: 16px;
+    min-width: 120px;
+  }
+
+  &--large {
+    height: 56px;
+    font-size: 18px;
+    min-width: 150px;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}

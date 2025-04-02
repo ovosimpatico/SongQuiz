@@ -1,0 +1,148 @@
+@use "sass:color";
+@use 'variables.scss';
+@use 'mixins.scss';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-normal;
+  color: variables.$text-primary;
+  background-color: variables.$background-color;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+// Animation for page transitions
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+// Button styles
+button {
+  cursor: pointer;
+  font-family: variables.$font-family-base;
+}
+
+// Link styles
+a {
+  color: variables.$primary-color;
+  text-decoration: none;
+  transition: color variables.$transition-fast;
+
+  &:hover {
+    color: color.adjust(variables.$primary-color, $lightness: -10%);
+  }
+}
+
+// Glass card styles
+.glass-card {
+  @include mixins.glassmorphism;
+  padding: variables.$spacing-lg;
+  border-radius: variables.$border-radius-lg;
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 variables.$spacing-lg;
+
+  @include mixins.mobile {
+    padding: 0 variables.$spacing-md;
+  }
+}
+
+// Focus styles
+:focus {
+  outline: 2px solid variables.$primary-color;
+  outline-offset: 2px;
+}
+
+// Remove focus outline for mouse users
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.mb-sm {
+  margin-bottom: variables.$spacing-sm;
+}
+
+.mb-md {
+  margin-bottom: variables.$spacing-md;
+}
+
+.mb-lg {
+  margin-bottom: variables.$spacing-lg;
+}
+
+.mt-sm {
+  margin-top: variables.$spacing-sm;
+}
+
+.mt-md {
+  margin-top: variables.$spacing-md;
+}
+
+.mt-lg {
+  margin-top: variables.$spacing-lg;
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn variables.$transition-base forwards;
+}
+
+// Background with gradient
+.bg-gradient {
+  background: variables.$primary-gradient;
+}

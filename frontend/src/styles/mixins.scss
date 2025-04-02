@@ -1,0 +1,130 @@
+@use 'variables.scss';
+
+// Glassmorphism style mixin
+@mixin glassmorphism {
+  background: variables.$glass-gradient;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid variables.$border-color;
+  box-shadow: variables.$shadow-sm;
+}
+
+// Responsive media queries
+@mixin mobile {
+  @media (max-width: #{variables.$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{variables.$breakpoint-md}) and (max-width: #{variables.$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{variables.$breakpoint-lg}) {
+    @content;
+  }
+}
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Typography styles
+@mixin heading-1 {
+  font-size: 36px;
+  font-weight: variables.$font-weight-bold;
+  line-height: 1.2;
+}
+
+@mixin heading-2 {
+  font-size: 28px;
+  font-weight: variables.$font-weight-bold;
+  line-height: 1.3;
+}
+
+@mixin heading-3 {
+  font-size: 22px;
+  font-weight: variables.$font-weight-semibold;
+  line-height: 1.4;
+}
+
+@mixin body-large {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@mixin body-regular {
+  font-size: variables.$font-size-base;
+  line-height: 1.5;
+}
+
+@mixin body-small {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@mixin caption {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+// Button styles
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: variables.$spacing-sm variables.$spacing-lg;
+  border-radius: variables.$border-radius-full;
+  font-weight: variables.$font-weight-medium;
+  transition: all variables.$transition-base;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: variables.$primary-gradient;
+  color: variables.$text-primary;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: variables.$shadow-md;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: rgba(255, 255, 255, 0.1);
+  color: variables.$text-primary;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
