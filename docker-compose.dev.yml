@@ -1,7 +1,7 @@
 services:
   frontend:
     container_name: frontend
-    image: ghcr.io/ovosimpatico/songquiz-frontend:latest
+    build: ./frontend
     ports:
       - "8083:80"
     depends_on:
@@ -9,6 +9,4 @@ services:
 
   backend:
     container_name: backend
-    image: ghcr.io/ovosimpatico/songquiz-backend:latest
-    ports:
-      - "8082:80"
+    build: ./backend
