@@ -24,11 +24,6 @@ class GameService:
 
     async def create_game(self, settings: GameSettings) -> GameSession:
         """Create a new game session with the specified settings."""
-        # Override settings to ensure exactly 4 questions
-        settings.num_songs = 4
-        settings.num_choices = 4
-
-
         # Process playlist if specified
         genres = settings.genres
         start_year = settings.start_year

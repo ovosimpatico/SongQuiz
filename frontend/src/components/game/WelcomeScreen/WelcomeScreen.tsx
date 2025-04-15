@@ -13,8 +13,8 @@ interface WelcomeScreenProps {
 }
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
-  // Always 4 songs per game
-  const NUM_SONGS = 4;
+  // Always 10 songs per game
+  const NUM_SONGS = 10;
   const NUM_CHOICES = 4;
 
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
